@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form method="post" action="/admin" id="formpost">
+                <div class="form-group">
+                    <label for="firstname">FirstName:</label>
+                    <input type="text" class="form-control" placeholder="insert firstname" name="firstname"
+                        id="firstname" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">LastName:</label>
+                    <input type="text" class="form-control" placeholder="insert lastname" name="lastname" id="lastname"
+                        required />
+                </div>
+
+                <div class="form-group">
+                    <label for="job">Job:</label>
+                    <input type="text" class="form-control" placeholder="insert job" name="job" id="job" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Addres:</label>
+                    <input type="email" class="form-control" placeholder="insert email address" name="email" id="email"
+                        required />
+                </div>
+
+                <div class="form-group">
+                    <label for="contactinfo">Emergency Contact Info:</label>
+                    <input type="text" class="form-control" placeholder="insert contact info" name="contactinfo"
+                        id="contactinfo" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="mailaddr">Mailing address:</label>
+                    <input type="email" class="form-control" placeholder="insert mailing address" name="mailaddr"
+                        id="mailaddr" required />
+                </div>
+
+                <div class="form-group">
+                    <p>Martial Status:</p>
+                    <input type="radio" name="status" id="status_A" value="status_A" required />
+                    <label for="Status_A">Status_A</label><br />
+                    <input type="radio" name="status" id="status_B" value="status_B" required />
+                    <label for="Status_B">Status_B</label><br />
+                    <input type="radio" name="status" id="status_C" value="status_C" required />
+                    <label for="Status_C">Status_C</label>
+                </div>
+
+                <div class="form-group">
+                    <p>Gender:</p>
+                    <input type="radio" name="gender" id="male" value="male" required />
+                    <label for="male">Male</label><br />
+                    <input type="radio" name="gender" id="female" value="female" required />
+                    <label for="female">Female</label><br />
+                    <input type="radio" name="gender" id="other" value="other" required />
+                    <label for="other">Other</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" class="form-control" name="department" id="department" required />
+                </div>
+
+                <div class="form-group">
+                    <P>User Type:</P>
+                    <% if (data) {%>
+                    <% data.forEach(function(users){ %>
+                    <input type="radio" name="user" id="<%= users.user%>" onchange="onChnageHandler(this)"
+                        value="<%= users.user%>" required />
+                    <label><%= users.user%></label><br />
+                    <% }) %>
+                    <% } %>
+                </div>
+
+                <input type="submit" class="btn btn-success" name="formpost" value="Submit" />
+            </form>
+
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>
